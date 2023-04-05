@@ -1,11 +1,16 @@
 {
   "name": "@puffmeow/napi-test",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "index.js",
   "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
   "napi": {
     "name": "napi-test",
     "triples": {
+      "defaults": true,
       "additional": [
         "aarch64-apple-darwin",
         "aarch64-linux-android",
