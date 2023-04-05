@@ -34,5 +34,8 @@
     "test": "ava",
     "universal": "napi universal",
     "version": "napi version"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
