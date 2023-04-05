@@ -17,8 +17,5 @@
   },
   "libc": [
     "musl"
-  ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  }
+  ]
 }
