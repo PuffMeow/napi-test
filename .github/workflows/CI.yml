@@ -300,10 +300,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "16"
+          registry-url: 'https://registry.npmjs.org'
       - name: Setup node dependencies
         run: |
           npm install -g pnpm@7.25.0
-          pnpm config set registry https://registry.npmjs.org/
           pnpm install
       - name: Download all artifacts
         uses: actions/download-artifact@v3
@@ -320,7 +320,7 @@ jobs:
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
           pnpm config set registry http://registry.npmjs.org 
-          pnpm publish --access public
+          pnpm publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
