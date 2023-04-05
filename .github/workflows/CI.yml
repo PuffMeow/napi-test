@@ -295,14 +295,11 @@ jobs:
       - test-linux-x64-gnu-binding
       - test-linux-aarch64-gnu-binding
       - test-linux-aarch64-musl-binding
-    permissions:
-      contents: read
-      packages: write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
+          node-version: "18"
           registry-url: 'https://npm.pkg.github.com'
           scope: '@scope'
       - name: Setup node dependencies
@@ -320,7 +317,7 @@ jobs:
         shell: bash
       - name: Publish
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
           pnpm publish --no-git-checks --access public
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
