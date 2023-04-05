@@ -303,6 +303,7 @@ jobs:
       - name: Setup node dependencies
         run: |
           npm install -g pnpm@7.25.0
+          pnpm config set registry https://registry.npmjs.org/
           pnpm install
       - name: Download all artifacts
         uses: actions/download-artifact@v3
@@ -321,5 +322,5 @@ jobs:
           cat ~/.npmrc
           pnpm publish --access public
         env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
